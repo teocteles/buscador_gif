@@ -24,10 +24,10 @@ class _HomePageState extends State<HomePage> {
       http.Response response;
 
       if(_search == null) {
-        response = await http.get("https://api.giphy.com/v1/gifs/trending?api_key=IxYxQwQFJAaRVxnyVmB4x1FmqZFT92kD&limit=20&rating=G");
+        response = await http.get("https://api.giphy.com/v1/gifs/trending?api_key=SUA_CHAVE&limit=20&rating=G");
 
       }else {
-        response = await http.get("https://api.giphy.com/v1/gifs/search?api_key=IxYxQwQFJAaRVxnyVmB4x1FmqZFT92kD&q=$_search&limit=19&offset=$_offset&rating=G&lang=pt");
+        response = await http.get("https://api.giphy.com/v1/gifs/search?api_key=SUA_CHAVE&q=$_search&limit=19&offset=$_offset&rating=G&lang=pt");
       }
 
       return json.decode(response.body);
@@ -123,7 +123,6 @@ class _HomePageState extends State<HomePage> {
          itemCount: _getCount(snapshot.data["data"]), 
          itemBuilder: (context, index) {
             return GestureDetector(
-              //  Image.network(snapshot.data["data"][index]["images"]["fixed_height"]["url"], height: 300.0, fit: BoxFit.cover)
               child: FadeInImage.memoryNetwork(
                         placeholder: kTransparentImage, 
                         image: snapshot.data["data"][index]["images"]["fixed_height"]["url"],
